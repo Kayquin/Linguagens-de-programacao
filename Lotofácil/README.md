@@ -21,8 +21,8 @@ O loop principal permite que o usuário faça múltiplas apostas até escolher a
 
 1. Clone o repositório para o seu ambiente local.
 2. Abra o terminal na pasta do projeto.
-3. Compile o código-fonte com o comando `javac Lotofacil.java`.
-4. Execute o programa com o comando `java Lotofacil`.
+3. Compile o código-fonte
+4. Execute o programa
 
 ## Contribuição
 
