@@ -1,4 +1,4 @@
-# Loteria Java
+# Loteria Java sem interface 
 
 Este é um programa simples em Java que simula um jogo de loteria com três opções de aposta: de 0 a 100, de A a Z e em número par ou ímpar.
 
