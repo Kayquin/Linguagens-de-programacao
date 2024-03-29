@@ -28,6 +28,7 @@ O loop principal permite que o usuário faça múltiplas apostas até escolher a
 
 Sinta-se à vontade para contribuir com melhorias ou novas funcionalidades através de pull requests.
 
-## Licença
+## DEMO
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+https://github.com/Kayquin/Linguagens-de-programacao/assets/104329791/5b1532ee-5e43-4004-b91b-25f5ff44cea7
+
