@@ -1,0 +1,132 @@
+import java.util.Scanner;
+import java.util.Random;
+
+
+public class Lotofacil {
+    public static void main(String[] args) throws Exception {
+
+        Lotofacil lotofacil = new Lotofacil();
+        Scanner scanner = new Scanner(System.in);
+
+        int option;
+
+        do {
+
+            System.out.println("**************************");
+            System.out.println("Menu LOTOFÁCIL:");
+            System.out.println("1) Apostar de 0 a 100");
+            System.out.println("2) Apostar de A à Z");
+            System.out.println("3) Apostar em par ou ímpar");
+            System.out.println("0) Sair");
+            System.out.println("**************************");
+
+            System.out.print("Escolha uma opção: ");
+
+            option = scanner.nextInt();
+            scanner.nextLine();
+            
+            switch (option) {
+
+                case 1:
+                    // Implement your code to place a bet between 0 and 100
+                    lotofacil.jogarzeroacem();
+                    break;
+
+                case 2:
+                    // Implement your code to place a bet between A and Z
+                    lotofacil.jogarLetras();
+                    break;
+
+                case 3:
+                    // Implement your code to place a bet on even or odd
+                    lotofacil.jogarParImpar();
+                    break;
+
+                case 0:
+                    System.out.println("Saindo do jogo...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+
+            }
+
+        } while (option != 0);
+
+        scanner.close();
+
+    }
+    public void jogarzeroacem() {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        System.out.println("**************************");
+        System.out.println("* Aposta de 0 a 100    *");
+        System.out.println("**************************");
+
+        System.out.print("Digite um número entre 0 e 100: ");
+
+        int numeroDoUsuario = scanner.nextInt();
+
+        if (numeroDoUsuario < 0 || numeroDoUsuario > 100) {
+            System.out.println("Aposta inválida!");
+        } else {
+            int numeroSorteado = random.nextInt(101);
+            System.out.println("Número sorteado: " + numeroSorteado);
+
+            if (numeroDoUsuario == numeroSorteado) {
+                System.out.println("Você ganhou R$ 1.000,00 reais.");
+            } else {
+                System.out.println("Que pena! O número sorteado foi: " + numeroSorteado);
+            }
+        }
+
+    }
+   
+    public void jogarLetras() {
+        Scanner scanner = new Scanner(System.in);
+    
+        System.out.println("**************************");
+        System.out.println("* Aposta de A à Z        *");
+        System.out.println("**************************");
+    
+        System.out.print("Digite uma letra entre A e Z: ");
+    
+        char letraDigitada = scanner.next().charAt(0);
+        char letraPremiada = 'J'; // Altere isso para a inicial do nome.
+    
+        if (!Character.isLetter(letraDigitada)) {
+            System.out.println("Aposta inválida!");
+        } else {
+            letraDigitada = Character.toUpperCase(letraDigitada);
+    
+            if (letraDigitada == letraPremiada) {
+                System.out.println("Você ganhou R$ 500,00 reais.");
+            } else {
+                System.out.println("Que pena! A letra sorteada foi: " + letraPremiada);
+            }
+        }
+    
+    }
+
+    public void jogarParImpar() {
+        Scanner scanner = new Scanner(System.in);
+    
+        System.out.println("**************************");
+        System.out.println("* Aposta de par ou ímpar  *");
+        System.out.println("**************************");
+    
+        System.out.print("Digite um número inteiro: ");
+    
+        int numeroDoUsuario = scanner.nextInt();
+    
+        if (numeroDoUsuario % 2 == 0) {
+            System.out.println("Você ganhou R$ 100,00 reais.");
+        } else {
+            System.out.println("Que pena! O número digitado é ímpar e a premiação foi para números pares.");
+        }
+    
+    
+    }
+
+}
