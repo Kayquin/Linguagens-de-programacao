@@ -15,6 +15,7 @@ public class LotofacilGUI {
     private JTextField textField;
     private int numeroSorteado;
     private JDialog previousDialog;
+    private int tentativas = 0;
 
     // CONSTRUTOR ------------------------------------------------
     public LotofacilGUI() {
@@ -33,7 +34,7 @@ public class LotofacilGUI {
         frame.setLocationRelativeTo(null); // Centraliza o frame
         frame.setResizable(false); // Não permite redimensionar o frame
         frame.setLayout(new GridLayout(0, 1));
-        frame.add(panel); 
+        frame.add(panel);
         panel.setLayout(new GridLayout(0, 1));
 
         panel.add(label);
@@ -85,7 +86,7 @@ public class LotofacilGUI {
         JButton closeButton = new JButton("Voltar"); // Botão para fechar o frame
         button4 = new JButton("Apostar de 0 a 100");
         label = new JLabel("Digite um número de 0 a 100: ");
-        
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 130); // Largura e altura
         frame.setLocationRelativeTo(null); // Centraliza o frame
@@ -104,7 +105,7 @@ public class LotofacilGUI {
         buttonPanel.add(button4);
         panel2.add(buttonPanel, BorderLayout.SOUTH); // Adiciona o buttonPanel no lado sul (baixo)
 
-        
+
         closeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,12 +120,12 @@ public class LotofacilGUI {
             }
         });
 
-        frame.setVisible(true); 
+        frame.setVisible(true);
 
 
 
-        
-        
+
+
     }
 
 
@@ -138,7 +139,7 @@ public class LotofacilGUI {
         JButton closeButton = new JButton("Voltar"); // Botão para fechar o frame
         button2 = new JButton("Apostar de A à Z");
         label = new JLabel("Digite uma letra de A à Z: ");
-    
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 130); // Largura e altura
         frame.setLocationRelativeTo(null); // Centraliza o frame
@@ -146,17 +147,17 @@ public class LotofacilGUI {
         frame.setLayout(new GridLayout(0, 1));
         frame.add(panel3); // Adiciona panel3 ao frame
         panel3.setLayout(new BorderLayout()); // Define o layout como BorderLayout para panel3
-    
+
         JPanel inputPanel = new JPanel(); // Painel para o campo de texto e o rótulo
         inputPanel.add(label);
         inputPanel.add(textField);
         panel3.add(inputPanel, BorderLayout.NORTH); // Adiciona o inputPanel no lado norte (topo)
-    
+
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Painel para os botões
         buttonPanel.add(closeButton);
         buttonPanel.add(button2);
         panel3.add(buttonPanel, BorderLayout.SOUTH); // Adiciona o buttonPanel no lado sul (baixo)
-    
+
         closeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -190,17 +191,17 @@ public class LotofacilGUI {
         frame.setLayout(new GridLayout(0, 1));
         frame.add(panel4); // Adiciona panel4 ao frame
         panel4.setLayout(new BorderLayout()); // Define o layout como BorderLayout para panel4
-    
+
         JPanel inputPanel = new JPanel(); // Painel para o campo de texto e o rótulo
         inputPanel.add(label);
         inputPanel.add(textField);
         panel4.add(inputPanel, BorderLayout.NORTH); // Adiciona o inputPanel no lado norte (topo)
-    
+
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Painel para os botões
         buttonPanel.add(closeButton);
         buttonPanel.add(button3);
         panel4.add(buttonPanel, BorderLayout.SOUTH); // Adiciona o buttonPanel no lado sul (baixo)
-        
+
         closeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -219,25 +220,14 @@ public class LotofacilGUI {
         Random random = new Random();
         numeroSorteado = random.nextInt(101);
 
-        int tentativas = 0;
-        while (true) {
             String texto = textField.getText();
             try {
                 int palpite = Integer.parseInt(texto);
                 if (palpite == numeroSorteado) {
-                    JOptionPane.showMessageDialog(frame, "Parabéns! Você acertou o número em " + tentativas + " tentativas.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
-                    break;
-                } else if (palpite < numeroSorteado) {
-                    if (previousDialog != null) {
-                        previousDialog.dispose(); // Fecha a caixa de diálogo anterior antes de exibir uma nova
-                    }
-                    previousDialog = new JOptionPane("O número é maior. Tente novamente!", JOptionPane.INFORMATION_MESSAGE).createDialog("Dica");
-                    previousDialog.setVisible(true);
+                    JOptionPane.showMessageDialog(frame, "Parabéns! Você acertou o número em " + (tentativas + 1) + " tentativas.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    if (previousDialog != null) {
-                        previousDialog.dispose(); // Fecha a caixa de diálogo anterior antes de exibir uma nova
-                    }
-                    previousDialog = new JOptionPane("O número é menor. Tente novamente!", JOptionPane.INFORMATION_MESSAGE).createDialog("Dica");
+                    tentativas++;
+                    previousDialog = new JOptionPane("Você errou. Tente novamente! \nNumero Sorteado: " + numeroSorteado, JOptionPane.INFORMATION_MESSAGE).createDialog("Dica");
                     previousDialog.setVisible(true);
                 }
             } catch (NumberFormatException ex) {
@@ -247,10 +237,8 @@ public class LotofacilGUI {
                 previousDialog = new JOptionPane("Por favor, insira um número válido!", JOptionPane.ERROR_MESSAGE).createDialog("Erro");
                 previousDialog.setVisible(true);
             }
-
-            tentativas++;
-        }
     }
+
 
 
 
