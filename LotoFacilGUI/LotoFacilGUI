@@ -1,0 +1,316 @@
+package Lotofacil;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+public class LotofacilGUI {
+    private int tentativas1 = 0; // Contador de tentativas para o jogo de 0 a 100
+    private int tentativas2 = 0; // Contador de tentativas para o jogo de letras
+    private int tentativas3 = 0; // Contador de tentativas para o jogo de par ou ímpar
+
+    // CONSTRUTOR ------------------------------------------------
+    public LotofacilGUI() {
+        JFrame frame = new JFrame("LOTOFÁCIL");
+        JPanel panel = new JPanel();
+        JButton button0 = new JButton("Sair");
+        JButton button1 = new JButton("Apostar de 0 a 100");
+        JButton button2 = new JButton("Apostar de A à Z");
+        JButton button3 = new JButton("Apostar em par ou ímpar");
+        JLabel label = new JLabel(" Escolha uma opção:");
+        JLabel imageLabel = new JLabel(); // JLabel para exibir a imagem
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 450); // Largura e altura
+        frame.setLocationRelativeTo(null); // Centraliza o frame
+        frame.setResizable(false); // Não permite redimensionar o frame
+        panel.setBackground(new Color(71, 142, 186));
+        frame.add(panel);
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 20));
+        
+        // Carregar a imagem e definir no JLabel
+        ImageIcon imageIcon = new ImageIcon("src/Lotofacil/Trevo.jpg"); 
+        Image image = imageIcon.getImage();
+        Image scaledImage = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH); // Redimensionar a imagem
+        imageIcon = new ImageIcon(scaledImage);
+        imageLabel.setIcon(imageIcon);
+
+        panel.add(imageLabel);
+        panel.add(label);
+        panel.add(button1);
+        panel.add(button2);
+        panel.add(button3);
+        panel.add(button0);
+
+        // Define o tamanho da fonte para os botões
+        Font buttonFont = new Font(button0.getFont().getName(), Font.ITALIC, 14);
+        button0.setFont(buttonFont);
+        button1.setFont(buttonFont);
+        button2.setFont(buttonFont);
+        button3.setFont(buttonFont);
+
+        Dimension buttonSize = new Dimension(200, 30);
+        button0.setPreferredSize(buttonSize);
+        button1.setPreferredSize(buttonSize);
+        button2.setPreferredSize(buttonSize);
+        button3.setPreferredSize(buttonSize);
+
+        button0.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Saindo do jogo...");
+                System.exit(0);
+            }
+        });
+
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jogarzeroacem();
+            }
+        });
+
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jogarLetras();
+            }
+        });
+
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jogarParImpar();
+            }
+        });
+
+        frame.setVisible(true);
+    }
+
+    // PAINEL DE 0 A 100 ------------------------------------------------
+
+    public void jogarzeroacem() {
+        JFrame frame = new JFrame("Jogar Zero a Cem");
+        JPanel panel2 = new JPanel();
+        JTextField textField = new JTextField(10); // Define o tamanho do campo de texto
+        JButton closeButton = new JButton("Voltar"); // Botão para fechar o frame
+        JButton button4 = new JButton("Apostar de 0 a 100");
+        JLabel label = new JLabel("Digite um número de 0 a 100: ");
+
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 250); // Largura e altura
+        frame.setLocationRelativeTo(null); // Centraliza o frame
+        frame.setResizable(false); // Não permite redimensionar o frame
+        frame.add(panel2);
+
+        panel2.setBackground(new Color(71, 142, 186));
+        panel2.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 20));
+        panel2.add(label);
+        panel2.add(textField);
+        panel2.add(button4);
+        panel2.add(closeButton);
+
+
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
+
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jogarJogozeroa100(textField);
+            }
+        });
+
+        frame.setVisible(true);
+
+    }
+
+    /// PAINEL LETRAS ------------------------------------------------
+
+    public void jogarLetras() {
+        JFrame frame = new JFrame("Jogar Letras");
+        JPanel panel3 = new JPanel(); // Novo painel panel2
+        JTextField textField = new JTextField(10); // Define o tamanho do campo de texto
+        JButton closeButton = new JButton("Voltar"); // Botão para fechar o frame
+        JButton button2 = new JButton("Apostar de A à Z");
+        JLabel label = new JLabel("Digite uma letra de A à Z: ");
+
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 250); // Largura e altura
+        frame.setLocationRelativeTo(null); // Centraliza o frame
+        frame.setResizable(false); // Não permite redimensionar o frame
+        frame.add(panel3); // Adiciona panel3 ao frame
+    
+        panel3.setBackground(new Color(71, 142, 186));
+        panel3.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 20));
+        panel3.add(label);
+        panel3.add(textField);
+        panel3.add(button2);
+        panel3.add(closeButton);
+      
+
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
+
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jogarjogoletras(textField);
+            }
+        });
+
+        frame.setVisible(true);
+    }
+
+    // PAINEL PAR OU IMPAR ------------------------------------------------
+
+    public void jogarParImpar() {
+        JFrame frame = new JFrame("Jogar Impar ou Par");
+        JPanel panel4 = new JPanel(); // Novo painel panel4
+        JTextField textField = new JTextField(10); // Define o tamanho do campo de texto
+        JButton closeButton = new JButton("Voltar"); // Botão para fechar o frame
+        JButton button3 = new JButton("Apostar em par ou ímpar");
+        JLabel label = new JLabel("Digite um número Impar ou Par: ");
+
+        
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 250); // Largura e altura
+        frame.setLocationRelativeTo(null); // Centraliza o frame
+        frame.setResizable(false); // Não permite redimensionar o frame
+        frame.add(panel4); // Adiciona panel4 ao frame
+        
+        panel4.setBackground(new Color(71, 142, 186));
+        panel4.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 20));
+        panel4.add(label);
+        panel4.add(textField);
+        panel4.add(button3);
+        panel4.add(closeButton);
+
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jogarjogoParImpar(textField);
+            }
+        });
+
+        frame.setVisible(true);
+    }
+
+    private void jogarJogozeroa100(JTextField textField) {
+        // Gerar um número aleatório de 0 a 100
+        Random random = new Random();
+        int numeroSorteado = random.nextInt(101);
+
+        String texto = textField.getText();
+        try {
+            int palpite = Integer.parseInt(texto);
+            if (palpite == numeroSorteado) {
+                JDialog previousDialog = new JOptionPane(
+                    "Parabéns! Você ganhou R$ 1.000,00 reais. \nVocê acertou o número em " + (tentativas1 + 1)
+                    + " tentativas.",
+                    JOptionPane.INFORMATION_MESSAGE).createDialog("Resultado");
+                    previousDialog.setVisible(true);
+                    tentativas1 = 0; // Zera o contador de tentativas após acertar a letra
+            } else {
+                tentativas1++;
+                JDialog previousDialog = new JOptionPane(
+                        "Você errou. Tente novamente! \nNumero Sorteado: " + numeroSorteado,
+                        JOptionPane.INFORMATION_MESSAGE).createDialog("Dica");
+                previousDialog.setVisible(true);
+            }
+        } catch (NumberFormatException ex) {
+
+            JDialog previousDialog = new JOptionPane("Por favor, insira um número válido!", JOptionPane.ERROR_MESSAGE)
+                    .createDialog("Erro");
+            previousDialog.setVisible(true);
+        }
+    }
+
+    private void jogarjogoletras(JTextField textField) {
+        Random random = new Random();
+        char letraSorteada = (char) (random.nextInt(26) + 'A');
+        String texto = textField.getText();
+        try {
+            if (texto.length() > 0) {
+                char palpite = texto.charAt(0);
+                if (Character.isLetter(palpite)) { // Verifica se é uma letra
+                    palpite = Character.toUpperCase(palpite);
+                    if (palpite == letraSorteada) {
+                        JDialog previousDialog = new JOptionPane(
+                                "Parabéns! Você ganhou R$ 500,00 reais. \nVocê acertou a letra em " + (tentativas2 + 1)
+                                        + " tentativas.",
+                                JOptionPane.INFORMATION_MESSAGE).createDialog("Resultado");
+                        previousDialog.setVisible(true);
+                        tentativas2 = 0; // Zera o contador de tentativas após acertar a letra
+                    } else {
+                        tentativas2++;
+                        JDialog previousDialog = new JOptionPane(
+                                "Você errou. Tente novamente! \nLetra Sorteada: " + letraSorteada,
+                                JOptionPane.INFORMATION_MESSAGE).createDialog("Dica");
+                        previousDialog.setVisible(true);
+                    }
+                } else {
+                    throw new IllegalArgumentException(); // Lança uma exceção se não for uma letra
+                }
+            } else {
+                throw new NullPointerException();
+            }
+        } catch (NullPointerException ex) {
+            JDialog previousDialog = new JOptionPane("Por favor, insira uma letra válida!", JOptionPane.ERROR_MESSAGE)
+                    .createDialog("Erro");
+            previousDialog.setVisible(true);
+        } catch (IllegalArgumentException ex) {
+            JDialog previousDialog = new JOptionPane("Por favor, insira apenas letras!", JOptionPane.ERROR_MESSAGE)
+                    .createDialog("Erro");
+            previousDialog.setVisible(true);
+        }
+    }
+
+    private void jogarjogoParImpar(JTextField textField) {
+    
+        String texto = textField.getText();
+        try {
+            int palpite = Integer.parseInt(texto);
+            if (palpite % 2 == 0) {
+                JDialog previousDialog = new JOptionPane(
+                        "Parabéns! Você ganhou R$ 100,00 reais. \nVocê acertou o número em " + (tentativas3 + 1)
+                                + " tentativas.",
+                        JOptionPane.INFORMATION_MESSAGE).createDialog("Resultado");
+                previousDialog.setVisible(true);
+                tentativas3 = 0; // Zera o contador de tentativas após acertar a letra
+            } else {
+                tentativas3++;
+                JDialog previousDialog = new JOptionPane(
+                    "Que pena! O número digitado é ímpar e a premiação foi para números pares.",
+                        JOptionPane.INFORMATION_MESSAGE).createDialog("Dica");
+                previousDialog.setVisible(true);
+            }
+
+        } catch (NumberFormatException ex) {
+            JDialog previousDialog = new JOptionPane("Por favor, insira um número válido!", JOptionPane.ERROR_MESSAGE)
+                    .createDialog("Erro");
+            previousDialog.setVisible(true);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        new LotofacilGUI();
+    }
+
+}
