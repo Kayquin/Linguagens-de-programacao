@@ -21,6 +21,8 @@ O programa informa o resultado de cada aposta e o número de tentativas quando a
 4. Adicione a imagem Trevo.jpg no package ou qualquer imagem de sua preferencia.
 5. Execute o arquivo `LotofacilGUI.java` para iniciar o programa.
 
+- Ou Baixe o arquivo LotofacilGUI.jar
+
 ## Contribuindo
 Contribuições são bem-vindas! Se você encontrar algum problema ou tiver alguma sugestão de melhoria, sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
