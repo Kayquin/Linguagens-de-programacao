@@ -224,6 +224,7 @@ public class LotofacilGUI {
                     "Parabéns! Você ganhou R$ 1.000,00 reais. \nVocê acertou o número em " + (tentativas1 + 1)
                     + " tentativas.",
                     JOptionPane.INFORMATION_MESSAGE).createDialog("Resultado");
+                    textField.requestFocus();
                     previousDialog.setVisible(true);
                     tentativas1 = 0; // Zera o contador de tentativas após acertar a letra
             } else {
@@ -231,6 +232,7 @@ public class LotofacilGUI {
                 JDialog previousDialog = new JOptionPane(
                         "Você errou. Tente novamente! \nNumero Sorteado: " + numeroSorteado,
                         JOptionPane.INFORMATION_MESSAGE).createDialog("Dica");
+                        textField.requestFocus();
                 previousDialog.setVisible(true);
             }
         } catch (NumberFormatException ex) {
@@ -255,13 +257,15 @@ public class LotofacilGUI {
                                 "Parabéns! Você ganhou R$ 500,00 reais. \nVocê acertou a letra em " + (tentativas2 + 1)
                                         + " tentativas.",
                                 JOptionPane.INFORMATION_MESSAGE).createDialog("Resultado");
-                        previousDialog.setVisible(true);
+                                textField.requestFocus();
+                                previousDialog.setVisible(true);
                         tentativas2 = 0; // Zera o contador de tentativas após acertar a letra
                     } else {
                         tentativas2++;
                         JDialog previousDialog = new JOptionPane(
                                 "Você errou. Tente novamente! \nLetra Sorteada: " + letraSorteada,
                                 JOptionPane.INFORMATION_MESSAGE).createDialog("Dica");
+                                textField.requestFocus();
                         previousDialog.setVisible(true);
                     }
                 } else {
@@ -291,13 +295,15 @@ public class LotofacilGUI {
                         "Parabéns! Você ganhou R$ 100,00 reais. \nVocê acertou o número em " + (tentativas3 + 1)
                                 + " tentativas.",
                         JOptionPane.INFORMATION_MESSAGE).createDialog("Resultado");
-                previousDialog.setVisible(true);
+                        textField.requestFocus();
+                    previousDialog.setVisible(true);
                 tentativas3 = 0; // Zera o contador de tentativas após acertar a letra
             } else {
                 tentativas3++;
                 JDialog previousDialog = new JOptionPane(
                     "Que pena! O número digitado é ímpar e a premiação foi para números pares.",
                         JOptionPane.INFORMATION_MESSAGE).createDialog("Dica");
+                        textField.requestFocus();
                 previousDialog.setVisible(true);
             }
 
