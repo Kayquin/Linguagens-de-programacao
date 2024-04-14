@@ -27,5 +27,5 @@ O programa informa o resultado de cada aposta e o número de tentativas quando a
 Contribuições são bem-vindas! Se você encontrar algum problema ou tiver alguma sugestão de melhoria, sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
 ## DEMO
-https://github.com/Kayquin/Linguagens-de-programacao/assets/104329791/dac5c059-9ba4-4de3-8226-cfce4ae167c5
+https://github.com/Kayquin/Linguagens-de-programacao/assets/104329791/77d1d8a4-0afd-4cee-b45a-794e018c1bf2
 
