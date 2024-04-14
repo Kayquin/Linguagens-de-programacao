@@ -50,6 +50,7 @@ public class LotofacilGUI {
         button2.setFont(buttonFont);
         button3.setFont(buttonFont);
 
+        // Define o tamanho dos botões
         Dimension buttonSize = new Dimension(200, 30);
         button0.setPreferredSize(buttonSize);
         button1.setPreferredSize(buttonSize);
@@ -93,7 +94,7 @@ public class LotofacilGUI {
     public void jogarzeroacem() {
         JFrame frame = new JFrame("Jogar Zero a Cem");
         JPanel panel2 = new JPanel();
-        JTextField textField = new JTextField(10); // Define o tamanho do campo de texto
+        JTextField textField = new JTextField(18); // Define o tamanho do campo de texto
         JButton closeButton = new JButton("Voltar"); // Botão para fechar o frame
         JButton button4 = new JButton("Apostar de 0 a 100");
         JLabel label = new JLabel("Digite um número de 0 a 100: ");
@@ -111,6 +112,15 @@ public class LotofacilGUI {
         panel2.add(button4);
         panel2.add(closeButton);
 
+        // Define o tamanho da fonte para os botões
+        Font buttonFont = new Font(closeButton.getFont().getName(), Font.ITALIC, 14);
+        closeButton.setFont(buttonFont);
+        button4.setFont(buttonFont);
+
+        // Define o tamanho dos botões
+        Dimension buttonSize = new Dimension(200, 30);
+        closeButton.setPreferredSize(buttonSize);
+        button4.setPreferredSize(buttonSize);
 
         closeButton.addActionListener(new ActionListener() {
             @Override
@@ -135,7 +145,7 @@ public class LotofacilGUI {
     public void jogarLetras() {
         JFrame frame = new JFrame("Jogar Letras");
         JPanel panel3 = new JPanel(); // Novo painel panel2
-        JTextField textField = new JTextField(10); // Define o tamanho do campo de texto
+        JTextField textField = new JTextField(18); // Define o tamanho do campo de texto
         JButton closeButton = new JButton("Voltar"); // Botão para fechar o frame
         JButton button2 = new JButton("Apostar de A à Z");
         JLabel label = new JLabel("Digite uma letra de A à Z: ");
@@ -153,6 +163,15 @@ public class LotofacilGUI {
         panel3.add(button2);
         panel3.add(closeButton);
       
+        // Define o tamanho da fonte para os botões
+        Font buttonFont = new Font(closeButton.getFont().getName(), Font.ITALIC, 14);
+        closeButton.setFont(buttonFont);
+        button2.setFont(buttonFont);
+
+        // Define o tamanho dos botões
+        Dimension buttonSize = new Dimension(200, 30);
+        closeButton.setPreferredSize(buttonSize);
+        button2.setPreferredSize(buttonSize);
 
         closeButton.addActionListener(new ActionListener() {
             @Override
@@ -176,7 +195,7 @@ public class LotofacilGUI {
     public void jogarParImpar() {
         JFrame frame = new JFrame("Jogar Impar ou Par");
         JPanel panel4 = new JPanel(); // Novo painel panel4
-        JTextField textField = new JTextField(10); // Define o tamanho do campo de texto
+        JTextField textField = new JTextField(18); // Define o tamanho do campo de texto
         JButton closeButton = new JButton("Voltar"); // Botão para fechar o frame
         JButton button3 = new JButton("Apostar em par ou ímpar");
         JLabel label = new JLabel("Digite um número Impar ou Par: ");
@@ -194,6 +213,16 @@ public class LotofacilGUI {
         panel4.add(textField);
         panel4.add(button3);
         panel4.add(closeButton);
+
+        // Define o tamanho da fonte para os botões
+        Font buttonFont = new Font(closeButton.getFont().getName(), Font.ITALIC, 14);
+        closeButton.setFont(buttonFont);
+        button3.setFont(buttonFont);
+
+        // Define o tamanho dos botões
+        Dimension buttonSize = new Dimension(200, 30);
+        closeButton.setPreferredSize(buttonSize);
+        button3.setPreferredSize(buttonSize);
 
         closeButton.addActionListener(new ActionListener() {
             @Override
