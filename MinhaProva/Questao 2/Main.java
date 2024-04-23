@@ -15,7 +15,7 @@ public class Main {
         jogadores.add(new Jogador("Fernanda Bande"));
         jogadores.add(new Jogador("Giovanna Lima"));
         jogadores.add(new Jogador("Giovanna Pitel"));
-        jogadores.add(new Jogador("sabelle Nogueira"));
+        jogadores.add(new Jogador("Isabelle Nogueira"));
         jogadores.add(new Jogador("Juninho"));
         jogadores.add(new Jogador("Leidy Elin"));
         jogadores.add(new Jogador("Lucas Henrique"));
@@ -45,12 +45,12 @@ public class Main {
                 break;
             }
 
-            for (Jogador jugador : jogadores) {
-                if (jugador.getNome().equalsIgnoreCase(votoEm)) {
-                    jugador.incrementaUmVoto();
-                    if (jugador.getVotos() > maxVotos) {
-                        maxVotos = jugador.getVotos();
-                        eliminado = jugador;
+            for (Jogador jogador : jogadores) {
+                if (jogador.getNome().equalsIgnoreCase(votoEm)) {
+                    jogador.incrementaUmVoto();
+                    if (jogador.getVotos() > maxVotos) {
+                        maxVotos = jogador.getVotos();
+                        eliminado = jogador;
                     }
                     break;
                 }
