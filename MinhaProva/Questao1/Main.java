@@ -1,12 +1,11 @@
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-
         ArrayList<Jogador> jogadores = new ArrayList<>();
+
         jogadores.add(new Jogador("Rodriguinho"));
         jogadores.add(new Jogador("Alane Dias"));
         jogadores.add(new Jogador("Beatriz Reis"));
@@ -36,30 +35,32 @@ public class Main {
         jogadores.add(new Jogador("Wanessa Camargo"));
         jogadores.add(new Jogador("Yasmin Brunet"));
 
-        int maxVotos = 0;
-        Jogador eliminado = null;
 
-        while (true) {
-            String votoEm = JOptionPane.showInputDialog("Em quem você vota para sair da casa?");
-            if (votoEm == null || votoEm.equalsIgnoreCase("sair")) {
-                break;
-            }
 
-            for (Jogador jugador : jogadores) {
-                if (jugador.getNome().equalsIgnoreCase(votoEm)) {
-                    jugador.incrementaUmVoto();
-                    if (jugador.getVotos() > maxVotos) {
-                        maxVotos = jugador.getVotos();
-                        eliminado = jugador;
+        Scanner scanner = new Scanner(System.in);
+        String input;
+            do {
+                System.out.println("Em quem você vota para sair da casa? ");
+                input = scanner.nextLine();
+                if (!input.equalsIgnoreCase("sair")) {
+                    for (Jogador jogador : jogadores) {
+                        if (jogador.getNome().equalsIgnoreCase(input)) {
+                            jogador.incrementaUmVoto();
+                            break;
+                        }
                     }
-                    break;
                 }
+            } while (!input.equalsIgnoreCase("sair"));
+
+                int maxVotos = 0;
+                Jogador eliminado = null;
+                for (Jogador jogador : jogadores) {
+                    if (jogador.getVotos() > maxVotos) {
+                        maxVotos = jogador.getVotos();
+                        eliminado = jogador;
+                    }
+                }
+
+                System.out.println("Se eu conseguir mover montanhas, se eu conseguir surfar um tsunami, \nse eu conseguir domar o sol, se eu conseguir fazer o mar virar sertão, \ne o sertão virar mar, se eu conseguir dizer o que eu nunca vou conseguir dizer, \naí terá chegado o dia em que eu vou conseguir te eliminar com alegria.\nCom " + maxVotos + " votos, é você quem sai " + eliminado.getNome());
             }
         }
-
-        if (eliminado!= null) {
-            JOptionPane.showMessageDialog(null, "Se eu conseguir mover montanhas, se eu conseguir surfar um tsunami,\nse eu conseguir domar o sol,\nse eu conseguir fazer o mar virar sertão, e o sertão virar mar,\nse eu conseguir dizer o que eu nunca vou conseguir dizer,\naí terá chegado o dia em que eu vou conseguir te eliminar com alegria.\nCom " + maxVotos + " votos, é você quem sai " + eliminado.getNome());
-        }
-    }
-}
-
